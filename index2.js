@@ -14,14 +14,14 @@ async function main(){
         ])
         serialBypass.println(dataBypass)
         console.log('SENT SERIAL BYPASS : ', dataBypass);
-        await new Promise(r => setTimeout(r, 4000));
+        await new Promise(r => setTimeout(r, 5000));
 
         await loop()
     }
 
-    serialBypass.on("data", (data2) => {
-        console.log('RESPONSE BYPASS :',data2);
-    })
+    // serialBypass.on("data", (data2) => {
+    //     console.log('RESPONSE BYPASS :',data2);
+    // })
 
     await loop()
 }

@@ -1,5 +1,5 @@
 const _serial = require('./class/serial.class.js')
-const serial = new _serial("/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0", 19200)
+const serial = new _serial("/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0", 9600)
 // const serialBypass = new _serial("/dev/serial/by-id/usb-1a86_USB2.0-Ser_-if00-port0", 9600)
 
 async function main(){
@@ -14,19 +14,19 @@ async function main(){
         ])
         serial.println(data)
         console.log('SENT SERIAL : ',data);
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, 100));
 
-        data = JSON.stringify([
-            {
-                "action": 1
-            },
-            {
-                "action": 1
-            }
-        ])
-        serial.println(data)
-        console.log('SENT SERIAL : ',data);
-        await new Promise(r => setTimeout(r, 2000));
+        // data = JSON.stringify([
+        //     {
+        //         "action": 1
+        //     },
+        //     {
+        //         "action": 1
+        //     }
+        // ])
+        // serial.println(data)
+        // console.log('SENT SERIAL : ',data);
+        // await new Promise(r => setTimeout(r, 2000));
 
         // let dataBypass = JSON.stringify([
         //     {
@@ -43,9 +43,9 @@ async function main(){
         await loop()
     }
 
-    serial.on("data", (data) => {
-        console.log('RESPONSE :',data);
-    })
+    // serial.on("data", (data) => {
+    //     console.log('RESPONSE :',data);
+    // })
     // serialBypass.on("data", (data2) => {
     //     console.log('RESPONSE BYPASS :',data2);
     // })
